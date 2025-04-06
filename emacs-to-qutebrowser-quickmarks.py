@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from pathlib import Path
 import re
 
@@ -19,6 +20,8 @@ qutebrowser_quickmarks_string = ""
 
 for line in emacs_bookmark_content.splitlines():
     splitted_string = re.sub(r"(\* \[\[)|(]\[)|(]])|:\w.*", r" ", line)[1:].strip().split(" ", 1)
+    # splitted_string[0] = url
+    # splitted_string[1] = name
     qutebrowser_quickmarks_string += f"{splitted_string[1]} {splitted_string[0]}\n"
 
 with open(QUTEBROWSER_QUICKMARKS_LOCATION, "w") as f:
